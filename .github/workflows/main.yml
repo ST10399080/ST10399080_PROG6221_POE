@@ -1,0 +1,31 @@
+name: .NET Framework CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.3
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v2
+
+    - name: Restore packages
+      run: nuget restore YourSolution.sln
+
+    - name: Build solution
+      run: msbuild YourSolution.sln /p:Configuration=Release
+
+    - name: Run tests (if any)
+      run: |
+        vstest.console.exe **\*Tests.dll
