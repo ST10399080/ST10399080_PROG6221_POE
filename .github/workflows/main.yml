@@ -21,10 +21,10 @@ jobs:
       uses: NuGet/setup-nuget@v2
 
     - name: Restore packages
-      run: nuget restore YourSolution.sln
+      run: nuget restore ST10399080_PROG6221_POE.sln
 
     - name: Build solution
-      run: msbuild YourSolution.sln /p:Configuration=Release
+      run: msbuild ST10399080_PROG6221_POE.sln /p:Configuration=Release
 
     - name: Run tests (if any)
       run: |
