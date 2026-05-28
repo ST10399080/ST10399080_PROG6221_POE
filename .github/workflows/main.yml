@@ -27,5 +27,5 @@ jobs:
       run: msbuild ST10399080_PROG6221_POE.sln /p:Configuration=Release
 
     - name: Run tests (if any)
-      run: |
+      run: dotnet test
         vstest.console.exe **\*Tests.dll
